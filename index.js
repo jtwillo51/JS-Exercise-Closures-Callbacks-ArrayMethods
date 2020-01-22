@@ -91,7 +91,7 @@ function processLastItem(stringList, cb) {
 function processSum(numberList, cb) {
   const total = numberList.reduce((total, index) => {
     return total += index;
-  },0);
+  }, 0);
   return cb(total);
 }
 
@@ -202,7 +202,7 @@ function getFullNames(runners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  let names= runners.map((person) => person.first_name.toUpperCase());
+  let names = runners.map((person) => person.first_name.toUpperCase());
   return names;
 }
 
@@ -220,7 +220,7 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  return runners.filter((person) =>  person.shirt_size === tShirtSize );
+  return runners.filter((person) => person.shirt_size === tShirtSize);
 }
 
 /**
@@ -234,7 +234,7 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @returns a number which is the sum of the donations by all runners.
 */
 function tallyUpDonations(runners) {
-  return runners.reduce((accum, current) => { return accum + current.donation}, 0);
+  return runners.reduce((accum, current) => { return accum + current.donation }, 0);
 }
 
 /////////////// CLOSURES ///////////////
@@ -281,15 +281,13 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(limit) {
+function counterMakerWithLimit(max) {
   let count = 0;
   function counter() {
-    return count++;
+   count > max ? (count = 0) : count;
+   return count++;
   }
-  if(count >= limit){
-    count = 0;
-  }
-  return count;
+  return counter;
 }
 
 /////////////// END OF CHALLENGE ///////////////
